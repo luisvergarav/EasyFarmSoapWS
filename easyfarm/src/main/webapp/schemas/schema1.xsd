@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://cl/easygroup/easyfarm/webservices/easyfarmservice"
+xmlns="http://cl/easygroup/easyfarm/webservices/easyfarmservice">
+
+  <xs:complexType name="actualizacion">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="almacen" type="almacen" minOccurs="0"/>
+          <xs:element name="articulos" type="articulo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="id" type="actualizacionPK" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="baseEntity" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="entity">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entity" abstract="true">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="almacen">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="activo" type="xs:string" minOccurs="0"/>
+          <xs:element name="actualizacions" type="actualizacion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="articulos" type="articulo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="idAlmacen" type="xs:int"/>
+          <xs:element name="imagen" type="xs:string" minOccurs="0"/>
+          <xs:element name="mensajes" type="mensaje" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="nombreAlmacen" type="xs:string" minOccurs="0"/>
+          <xs:element name="promocions" type="promocion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="tipoAlmacen" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoAlmacenBean" type="tipoAlmacen" minOccurs="0"/>
+          <xs:element name="ubicacion" type="ubicacion" minOccurs="0"/>
+          <xs:element name="ubicacions" type="ubicacion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="usuario" type="usuario" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="articulo">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="actualizacions" type="actualizacion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="almacen" type="almacen" minOccurs="0"/>
+          <xs:element name="fechaActualizacion" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="id" type="articuloPK" minOccurs="0"/>
+          <xs:element name="nombreArticulo" type="xs:string" minOccurs="0"/>
+          <xs:element name="precio" type="xs:int"/>
+          <xs:element name="promocions" type="promocion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="tipoArticulo" type="tipoArticulo" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="articuloPK">
+    <xs:sequence>
+      <xs:element name="idAlmacen" type="xs:int"/>
+      <xs:element name="idArticulo" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="promocion">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="almacen" type="almacen" minOccurs="0"/>
+          <xs:element name="articulos" type="articulo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="id" type="promocionPK" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="promocionPK">
+    <xs:sequence>
+      <xs:element name="idAlmacen" type="xs:int"/>
+      <xs:element name="idPromocion" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoArticulo">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="articulos" type="articulo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="idTipoArticulo" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mensaje">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="almacen" type="almacen" minOccurs="0"/>
+          <xs:element name="id" type="mensajePK" minOccurs="0"/>
+          <xs:element name="texto" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoMensaje" type="tipoMensaje" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mensajePK">
+    <xs:sequence>
+      <xs:element name="idAlmacen" type="xs:int"/>
+      <xs:element name="idMensaje" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoMensaje">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="idTipoMensaje" type="xs:int"/>
+          <xs:element name="mensajes" type="mensaje" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tipoAlmacen">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="almacens" type="almacen" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="idTipoAlmacen" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ubicacion">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="almacen" type="almacen" minOccurs="0"/>
+          <xs:element name="almacens" type="almacen" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="calle" type="xs:string" minOccurs="0"/>
+          <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+          <xs:element name="comuna" type="xs:string" minOccurs="0"/>
+          <xs:element name="latitud" type="xs:string" minOccurs="0"/>
+          <xs:element name="longitud" type="xs:string" minOccurs="0"/>
+          <xs:element name="numeroCalle" type="xs:int"/>
+          <xs:element name="region" type="xs:string" minOccurs="0"/>
+          <xs:element name="ubicacion_ID" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="activo" type="xs:int"/>
+          <xs:element name="almacens" type="almacen" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="direccions" type="direccion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="idUsuario" type="xs:int"/>
+          <xs:element name="nick" type="xs:string" minOccurs="0"/>
+          <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+          <xs:element name="password" type="xs:string" minOccurs="0"/>
+          <xs:element name="usuarioRoles" type="usuarioRole" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="direccion">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="calle" type="xs:string" minOccurs="0"/>
+          <xs:element name="comuna" type="comuna" minOccurs="0"/>
+          <xs:element name="id" type="direccionPK" minOccurs="0"/>
+          <xs:element name="latitud" type="xs:int"/>
+          <xs:element name="longitud" type="xs:int"/>
+          <xs:element name="numeroCalle" type="xs:int"/>
+          <xs:element name="usuario" type="usuario" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="comuna">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="ciudad" type="ciudad" minOccurs="0"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="direccions" type="direccion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="id" type="comunaPK" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ciudad">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="comunas" type="comuna" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="id" type="ciudadPK" minOccurs="0"/>
+          <xs:element name="region" type="region" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ciudadPK">
+    <xs:sequence>
+      <xs:element name="idCiudad" type="xs:int"/>
+      <xs:element name="idRegion" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="region">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="ciudads" type="ciudad" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+          <xs:element name="idRegion" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="comunaPK">
+    <xs:sequence>
+      <xs:element name="idCiudad" type="xs:int"/>
+      <xs:element name="idComuna" type="xs:int"/>
+      <xs:element name="idRegion" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="direccionPK">
+    <xs:sequence>
+      <xs:element name="idCiudad" type="xs:int"/>
+      <xs:element name="idComuna" type="xs:int"/>
+      <xs:element name="idRegion" type="xs:int"/>
+      <xs:element name="idUsuario" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuarioRole">
+    <xs:complexContent>
+      <xs:extension base="baseEntity">
+        <xs:sequence>
+          <xs:element name="authority" type="xs:string" minOccurs="0"/>
+          <xs:element name="id" type="usuarioRolePK" minOccurs="0"/>
+          <xs:element name="usuario" type="usuario" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="usuarioRolePK">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int"/>
+      <xs:element name="usuarioRolesId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actualizacionPK">
+    <xs:sequence>
+      <xs:element name="idActualizacion" type="xs:int"/>
+      <xs:element name="idAlmacen" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+<persistence-unit name="mysql-eclipselink"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>cl.easygroup.easyfarm.model.entities.Actualizacion</class>
+		<class>cl.easygroup.easyfarm.model.entities.ActualizacionPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Almacen</class>
+		<class>cl.easygroup.easyfarm.model.entities.Articulo</class>
+		<class>cl.easygroup.easyfarm.model.entities.ArticuloPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Ciudad</class>
+		<class>cl.easygroup.easyfarm.model.entities.CiudadPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Comuna</class>
+		<class>cl.easygroup.easyfarm.model.entities.ComunaPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Direccion</class>
+		<class>cl.easygroup.easyfarm.model.entities.DireccionPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Mensaje</class>
+		<class>cl.easygroup.easyfarm.model.entities.MensajePK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Promocion</class>
+		<class>cl.easygroup.easyfarm.model.entities.PromocionPK</class>
+		<class>cl.easygroup.easyfarm.model.entities.Region</class>
+		<class>cl.easygroup.easyfarm.model.entities.TipoAlmacen</class>
+		<class>cl.easygroup.easyfarm.model.entities.TipoArticulo</class>
+		<class>cl.easygroup.easyfarm.model.entities.TipoMensaje</class>
+		<class>cl.easygroup.easyfarm.model.entities.Ubicacion</class>
+		<class>cl.easygroup.easyfarm.model.entities.Usuario</class>
+		<class>cl.easygroup.easyfarm.model.entities.UsuarioRole</class>
+		<class>cl.easygroup.easyfarm.model.entities.UsuarioRolePK</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/foo" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="welcome1"/>				
+		</properties>
+	</persistence-unit>
+</persistence>

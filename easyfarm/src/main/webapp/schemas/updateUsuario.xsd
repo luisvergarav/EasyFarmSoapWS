@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://cl/easygroup/easyfarm/webservices/usuario/actualizar" 
+xmlns:tns="http://cl/easygroup/easyfarm/webservices/usuario/actualizar" 
+xmlns:model="http://cl/easygroup/easyfarm/webservices/easyfarmservice"
+elementFormDefault="qualified">
+
+<import namespace="http://cl/easygroup/easyfarm/webservices/easyfarmservice"  schemaLocation="schema1.xsd"/>
+
+  <element name="updateUsuarioRequest">
+  <complexType>
+  <sequence>
+
+  <element name="usuario"  type="model:usuario"/>
+  
+  </sequence>
+  </complexType>
+  </element>
+
+
+<element name="updateUsuarioResponse">
+  <complexType>
+  <sequence>
+  	<element name="respuesta" type="boolean" />
+		
+ 
+  </sequence>
+  </complexType>
+  </element>
+
+</schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://cl/easygroup/easyfarm/webservices/productor/agregar" 
+xmlns:tns="http://cl/easygroup/easyfarm/webservices/productor/agregar" 
+xmlns:model="http://cl/easygroup/easyfarm/webservices/easyfarmservice"
+elementFormDefault="qualified">
+
+<import namespace="http://cl/easygroup/easyfarm/webservices/easyfarmservice"  schemaLocation="schema1.xsd"/>
+
+  <element name="addProductorRequest">
+  <complexType>
+  <sequence>
+  <element name="idUsuario" type="integer" />
+  <element name="producer"  type="model:almacen"/>
+  <element name="tipoProducer" type="integer" />
+  </sequence>
+  </complexType>
+  </element>
+
+
+<element name="addProductorResponse">
+  <complexType>
+  <sequence>
+  	<element name="respuesta" type="boolean" />
+		
+ 
+  </sequence>
+  </complexType>
+  </element>
+
+</schema>
